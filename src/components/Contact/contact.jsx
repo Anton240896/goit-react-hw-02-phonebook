@@ -1,14 +1,14 @@
-import { ContactItem, ContactName } from './contact.styled';
+import { ContactContainer, ContactName } from './contact.styled';
 
 export const Contact = ({ id, name, phone, deleteContact }) => {
   return (
-    <ContactItem>
+    <ContactContainer>
       <ContactName>
         {name}: {phone}
       </ContactName>
       <button id={id} type="button" onClick={deleteContact}>
         Delete
       </button>
-    </ContactItem>
+    </ContactContainer>
   );
 };

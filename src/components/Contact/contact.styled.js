@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ContactItem = styled.li`
+export const ContactContainer = styled.li`
   display: flex;
   align-items: flex-end;
   font-weight: bold;
