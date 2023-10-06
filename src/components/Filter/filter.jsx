@@ -1,5 +1,3 @@
-import { Label } from './filter.styled';
-
 export const Filter = ({ value, onChange }) => {
   return (
     <label>
