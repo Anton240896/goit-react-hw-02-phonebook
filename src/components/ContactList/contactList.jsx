@@ -1,9 +1,9 @@
 import { Contact } from 'components/Contact/contact';
-import { ContactItem } from './contactList.styled';
+import { ContactListStyled } from './contactList.styled';
 
 export const ContactList = ({ contactsBook, deleteContact }) => {
   return (
-    <div>
+    <ContactListStyled>
       {contactsBook.map(({ id, name, phone }) => (
         <Contact
           key={id}
@@ -13,6 +13,6 @@ export const ContactList = ({ contactsBook, deleteContact }) => {
           deleteContact={deleteContact}
         />
       ))}
-    </div>
+    </ContactListStyled>
   );
 };
