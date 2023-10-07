@@ -28,46 +28,44 @@ export class App extends Component {
     }
 
     this.setState(prevState => {
-      const { contacts } = prevState;
-      data.id = nanoid();
-      return { contacts: [...contacts, data] };
+      return { contacts: [...prevState.contacts, { ...data, id: nanoid }] };
     });
   };
 
   /*============================================*/
 
-  onfilter = evt => {
-    this.setState({ filter: evt.currentTarget.value });
+  onFilter = evt => {
+    this.setState({ filter: evt.target.value });
   };
   /*============================================*/
 
-  filterElem = contacts => {
-    const filter = this.state.filter.toLowerCase();
-    return contacts.filter(({ name }) => name.toLowerCase().includes(filter));
+  filterElem = () => {
+    const { contacts, filter } = this.state;
+    return contacts.filter(({ name }) =>
+      name.toLowerCase().includes(filter.toLowerCase())
+    );
   };
   /*============================================*/
 
-  deleteContact = evt => {
-    const deleteId = evt.currentTarget.id;
+  deleteContact = deleteId => {
     this.setState(prevState => {
-      const newContacts = prevState.contacts.filter(
-        ({ id }) => id !== deleteId
-      );
-      return { contacts: newContacts };
+      return {
+        contacts: prevState.contacts.filter(({ id }) => id !== deleteId),
+      };
     });
   };
 
   /*============================================*/
 
   render() {
-    const filterElement = this.filterElem(this.state.contacts);
+    const filterElement = this.filterElem();
 
     return (
       <Container>
         <PhonebookName>Phonebook</PhonebookName>
         <ContactForm addContact={this.addContact} />
         <h3>Contacts</h3>
-        <Filter value={this.state.filter} onChange={this.handleFilter} />
+        <Filter value={this.state.filter} onChange={this.onFilter} />
         <ContactList
           contactsBook={filterElement}
           deleteContact={this.deleteContact}
