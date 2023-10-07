@@ -6,7 +6,7 @@ export const Contact = ({ id, name, phone, deleteContact }) => {
       <ContactName>
         {name}: {phone}
       </ContactName>
-      <button id={id} type="button" onClick={deleteContact}>
+      <button type="button" onClick={() => deleteContact(id)}>
         Delete
       </button>
     </ContactContainer>
