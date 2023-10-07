@@ -28,7 +28,7 @@ export class App extends Component {
     }
 
     this.setState(prevState => {
-      return { contacts: [...prevState.contacts, { ...data, id: nanoid }] };
+      return { contacts: [...prevState.contacts, { ...data, id: nanoid() }] };
     });
   };
 
